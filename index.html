@@ -1,14 +1,18 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-    <script type="module" crossorigin src="/assets/index-Rj_xkMr_.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D1DFn9Na.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
-</html>
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, '.', '');
 
+  return {
+    plugins: [react(), tailwindcss()],
+    base: '/BiologyKeystones/',
+
+    define: {
+      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+    },
+
+    resolve: {
+      alias: {
+        '@': resolve(__dirname, '.'),
+      },
+    },
+  };
+});
